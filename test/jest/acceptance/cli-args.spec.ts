@@ -454,4 +454,24 @@ describe('cli args', () => {
       expect(code).toEqual(0);
     });
   }
+
+  describe('container test --exclude-base-image-vulns', () => {
+    it('has no vulns with flag without a dockerfile', async () => {
+      const withFlag = await runSnykCLI(
+        `container test alpine:3.10 --exclude-base-image-vulns`,
+      );
+      expect(withFlag.code).toEqual(0);
+    });
+
+    it('has no vulns with flag with a dockerfile', async () => {
+      const dockerfilePath = path.normalize(
+        'test/acceptance/fixtures/docker/Dockerfile.alpine-3.12.0',
+      );
+
+      const withDockerfile = await runSnykCLI(
+        `container test alpine:3.12.0 --json --file=${dockerfilePath} --exclude-base-image-vulns`,
+      );
+      expect(withDockerfile.code).toEqual(0);
+    });
+  });
 });
