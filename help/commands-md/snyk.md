@@ -123,6 +123,10 @@ For advanced usage, we offer language and context specific flags, listed further
 - `--project-name`=<PROJECT_NAME>:
   Specify a custom Snyk project name.
 
+- `--target-reference`=<TARGET_REFERENCE>:
+  (only in `monitor` command)
+  A reference to separate this scan from other scans of the same project. For example, a branch name or version.
+
 - `--policy-path`=<PATH_TO_POLICY_FILE>`:
   Manually pass a path to a snyk policy file.
 
